@@ -1,7 +1,7 @@
  # frozen_string_literal: true
  ## This class can be included in ActiveRecord models so they can have the ability to
  ## automatically sync to other microservices
-require 'aws/sns_publisher'
+require 'sns_publisher'
 require 'active_support'
 
  module CareleverSyncable
@@ -13,7 +13,7 @@ require 'active_support'
 
   # Reason that it has a parameter is that we can manually call it without forcing the callback
   def publish_sns(action)
-    Aws::SnsPublisher.new(
+    SnsPublisher.new(
       action:        action,
       model_name:    self.class.name,
       model_data:    model_data,
@@ -42,6 +42,6 @@ require 'active_support'
 
   # List of microservices that can receive this data sync
   def microservices
-    raise NotImplementedError
+    []
   end
 end
