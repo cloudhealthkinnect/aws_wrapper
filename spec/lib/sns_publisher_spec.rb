@@ -9,7 +9,7 @@ RSpec.describe SnsPublisher do
   before do
     allow(aws_client).to receive(:aws_config).and_return(aws_config)
     allow(aws_client).to receive(:sns).and_return(sns)
-    allow(sns).to receive(:publish).and_return true
+    allow(sns).to receive(:publish).and_return(true)
 
     allow(AwsClient).to receive(:new).and_return(aws_client)
   end
