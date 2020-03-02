@@ -1,0 +1,6 @@
+.byebug_history
+/.bundle
+/*.gem
+/Gemfile.lock
+*.DS_Store
+.idea
