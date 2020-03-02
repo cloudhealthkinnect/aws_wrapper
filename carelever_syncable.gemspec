@@ -8,4 +8,6 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Carelever']
   spec.email         = 'dev@carelever.com'
   spec.license       = 'Carelever'
+
+  spec.add_dependency('aws-sdk-sns', '1.21.0')
 end
