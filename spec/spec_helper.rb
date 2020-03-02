@@ -9,6 +9,7 @@ ROOT_SPEC = File.dirname(__FILE__)
 
 load File.join(ROOT_SPEC, 'schema.rb')
 Dir[File.join(ROOT_SPEC, 'support' ,'**', '*.rb')].each{|f| require f }
+Dir[File.join(ROOT_SPEC, 'models' ,'**', '*.rb')].each{|f| require f }
 Dir[File.join(ROOT_LIB, '**', '*.rb')].each{|f| require f }
 
 RSpec.configure do |config|
