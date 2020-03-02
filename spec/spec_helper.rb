@@ -8,7 +8,8 @@ ROOT_LIB  = File.join(Pathname(File.expand_path(File.join(File.dirname(__FILE__)
 ROOT_SPEC = File.dirname(__FILE__)
 
 load File.join(ROOT_SPEC, 'schema.rb')
-Dir[File.join(ROOT_SPEC, '**', '*.rb')].each{|f| require f }
+Dir[File.join(ROOT_SPEC, 'support' ,'**', '*.rb')].each{|f| require f }
+Dir[File.join(ROOT_LIB, '**', '*.rb')].each{|f| require f }
 
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|

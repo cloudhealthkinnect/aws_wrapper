@@ -1,5 +1,3 @@
-require 'support/rails'
-
 RSpec.describe AwsClient do
   subject(:client) { AwsClient.new }
 
