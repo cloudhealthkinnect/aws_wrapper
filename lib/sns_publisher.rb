@@ -7,13 +7,9 @@ class SnsPublisher
   end
 
   def call
-    topic_arn = aws_config[:sns_topic_arn_data_sync_publisher]
-    AwsClient.new.sns.publish(topic_arn: topic_arn, message: @data_to_be_sent.to_json)
-  end
+    aws_client = AwsClient.new
+    topic_arn  = aws_client.aws_config[:sns_topic_arn_data_sync_publisher]
 
-  private
-
-  def aws_config
-    @aws_config ||= Rails.application.config_for(:aws_config).symbolize_keys
+    aws_client.sns.publish(topic_arn: topic_arn, message: @data_to_be_sent.to_json)
   end
 end
