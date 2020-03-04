@@ -10,6 +10,6 @@ class SnsPublisher
     aws_client = AwsClient.new
     topic_arn  = aws_client.aws_config[:sns_topic_arn_data_sync_publisher]
 
-    aws_client.sns.publish(topic_arn: topic_arn, message: @data_to_be_sent.to_json)
+    aws_client.sns_client.publish(topic_arn: topic_arn, message: @data_to_be_sent.to_json)
   end
 end

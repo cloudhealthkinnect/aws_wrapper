@@ -22,7 +22,7 @@ RSpec.describe AwsClient do
 
   describe '#sns' do
     it 'returns an object with instance of Aws::SNS::Client' do
-      expect(client.sns).to be_a Aws::SNS::Client
+      expect(client.sns_client).to be_a Aws::SNS::Client
     end
   end
 
