@@ -11,13 +11,13 @@ require 'active_support'
     after_commit -> { publish_sns(activerecord_action) }
   end
 
-  # Reason that it has a parameter is that we can manually call it without forcing the callback
+  # Reason that it has a parameter is that so we can manually call it without forcing the callback to run
   def publish_sns(action)
     SnsPublisher.new(
-      action:        action,
-      model_name:    self.class.name,
-      model_data:    model_data,
-      microservices: microservices
+      activerecord_action: action,
+      model_name:          self.class.name,
+      model_data:          model_data,
+      microservices:       microservices
     ).call
   end
 

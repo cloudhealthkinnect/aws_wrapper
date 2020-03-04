@@ -19,10 +19,10 @@ RSpec.describe CareleverSyncable do
       model.publish_sns('create')
 
       expect(SnsPublisher).to have_received(:new).with(
-        action:        'create',
-        model_name:    'Object',
-        model_data:    model_attributes,
-        microservices: microservices
+        activerecord_action: 'create',
+        model_name:          'Object',
+        model_data:          model_attributes,
+        microservices:       microservices
       )
     end
   end
@@ -37,10 +37,10 @@ RSpec.describe CareleverSyncable do
         location.save
 
         expect(SnsPublisher).to have_received(:new).with(
-          action:        'create',
-          model_name:    Location.name,
-          model_data:    location.attributes,
-          microservices: microservices
+          activerecord_action: 'create',
+          model_name:          Location.name,
+          model_data:          location.attributes,
+          microservices:       microservices
         )
       end
     end
@@ -52,10 +52,10 @@ RSpec.describe CareleverSyncable do
         location.update(name: 'I am the new site')
 
         expect(SnsPublisher).to have_received(:new).with(
-          action:        'update',
-          model_name:    Location.name,
-          model_data:    location.attributes,
-          microservices: microservices
+          activerecord_action: 'update',
+          model_name:           Location.name,
+          model_data:          location.attributes,
+          microservices:       microservices
         )
       end
     end
@@ -67,10 +67,10 @@ RSpec.describe CareleverSyncable do
         location.destroy
 
         expect(SnsPublisher).to have_received(:new).with(
-          action:        'destroy',
-          model_name:    Location.name,
-          model_data:    location.attributes,
-          microservices: microservices
+          activerecord_action: 'destroy',
+          model_name:          Location.name,
+          model_data:          location.attributes,
+          microservices:       microservices
         )
       end
     end
