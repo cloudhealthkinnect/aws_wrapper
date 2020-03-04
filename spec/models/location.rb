@@ -1,5 +1,5 @@
-require 'carelever_syncable'
+require 'aws_wrapper/syncable'
 
 class Location < ActiveRecord::Base
-  include CareleverSyncable
+  include AwsWrapper::Syncable
 end

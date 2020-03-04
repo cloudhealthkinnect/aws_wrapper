@@ -1,5 +1,5 @@
-RSpec.describe AwsClient do
-  subject(:client) { AwsClient.new }
+RSpec.describe AwsWrapper::AwsClient do
+  subject(:client) { AwsWrapper::AwsClient.new }
 
   let(:aws_config)  { { sns_topic_arn_data_sync_publisher: 'publish-arn.aws.com/123'} }
   let(:aws_client)  { instance_double(Aws::SNS::Client) }

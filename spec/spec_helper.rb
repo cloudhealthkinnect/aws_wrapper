@@ -2,7 +2,7 @@ require 'rspec'
 require 'active_record'
 require 'pry'
 
-ActiveRecord::Base.establish_connection(adapter: 'postgresql', encoding: 'unicode', database: 'carelever_syncable')
+ActiveRecord::Base.establish_connection(adapter: 'postgresql', encoding: 'unicode', database: 'aws_wrapper')
 
 ROOT_LIB  = File.join(Pathname(File.expand_path(File.join(File.dirname(__FILE__), '..'))), 'lib')
 ROOT_SPEC = File.dirname(__FILE__)
