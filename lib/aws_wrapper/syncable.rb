@@ -18,6 +18,7 @@ module AwsWrapper
         activerecord_action: action,
         model_name:          self.class.name,
         model_data:          model_data,
+        organisation_id:     organisation_id,
         microservices:       microservices
       ).call
     end
