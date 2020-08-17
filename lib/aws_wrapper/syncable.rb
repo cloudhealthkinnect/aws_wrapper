@@ -14,6 +14,8 @@ module AwsWrapper
 
     # Reason that it has a parameter is that so we can manually call it without forcing the callback to run
     def publish_sns(action)
+      return if Rails.env.development? || Rails.env.test?
+
       SnsPublisher.new(
         activerecord_action: action,
         model_name:          self.class.name,
