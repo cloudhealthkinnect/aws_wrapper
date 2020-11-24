@@ -10,7 +10,7 @@ module AwsWrapper
     end
 
     def sns_client
-      Aws::SNS::Client.new(region: @aws_config[:aws_default_region])
+      Aws::SNS::Client.new(region: @aws_config[:aws_default_region], credentials: credentials)
     end
 
     def sqs_client
