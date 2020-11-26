@@ -21,6 +21,10 @@ module AwsWrapper
       Aws::S3::Client.new(region: @aws_config[:aws_s3_emails_region], credentials: credentials)
     end
 
+    def dynamodb
+      Aws::DynamoDB::Client.new(region: aws_config[:aws_default_region], credentials: credentials)
+    end
+
     private
 
     def credentials
