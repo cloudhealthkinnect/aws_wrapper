@@ -6,7 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'activesupport'
-gem 'aws-sdk-sns', '1.21.0'
+gem 'aws-sdk-sns', '1.65.0'
 
 group :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -14,7 +14,7 @@ group :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pg'
   gem 'pry'
-  gem 'rspec', '~> 3.9'
+  gem 'rspec', '~> 3.12'
 end
 
 group :development, :test do
