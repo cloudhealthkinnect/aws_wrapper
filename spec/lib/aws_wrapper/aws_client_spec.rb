@@ -15,6 +15,11 @@ RSpec.describe AwsWrapper::AwsClient do
     allow(Rails).to receive(:application)
                 .and_return(application)
 
+    Rails.define_singleton_method(:env) {} # define empty env method
+    allow(Rails).to receive(:env).and_return(
+      ActiveSupport::StringInquirer.new('production') # simulate production environment
+    )
+
     allow(Aws::SNS::Client).to receive(:new)
                            .and_return(aws_client)
 

@@ -48,5 +48,10 @@ module AwsWrapper
     def microservices
       []
     end
+
+    # Implement logic to retrieve the organisation ID
+    def organisation_id
+      nil
+    end
   end
 end
