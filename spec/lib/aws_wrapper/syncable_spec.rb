@@ -12,6 +12,10 @@ RSpec.describe AwsWrapper::Syncable do
 
     allow(model).to receive(:model_data).and_return(model_attributes)
     allow(model).to receive(:microservices).and_return(microservices)
+    Rails.define_singleton_method(:env) {} # define empty env method
+    allow(Rails).to receive(:env).and_return(
+      ActiveSupport::StringInquirer.new('production') # simulate production environment
+    )
   end
 
   describe '#publish_sns' do
@@ -22,6 +26,7 @@ RSpec.describe AwsWrapper::Syncable do
         activerecord_action: 'create',
         model_name:          'Object',
         model_data:          model_attributes,
+        organisation_id:     nil,
         microservices:       microservices
       )
     end
@@ -40,6 +45,7 @@ RSpec.describe AwsWrapper::Syncable do
           activerecord_action: 'create',
           model_name:          Location.name,
           model_data:          location.attributes,
+          organisation_id:     nil,
           microservices:       microservices
         )
       end
@@ -55,6 +61,7 @@ RSpec.describe AwsWrapper::Syncable do
           activerecord_action: 'update',
           model_name:           Location.name,
           model_data:          location.attributes,
+          organisation_id:     nil,
           microservices:       microservices
         )
       end
@@ -70,6 +77,7 @@ RSpec.describe AwsWrapper::Syncable do
           activerecord_action: 'destroy',
           model_name:          Location.name,
           model_data:          location.attributes,
+          organisation_id:     nil,
           microservices:       microservices
         )
       end
