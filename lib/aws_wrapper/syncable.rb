@@ -51,7 +51,7 @@ module AwsWrapper
 
     # Implement logic to retrieve the organisation ID
     def organisation_id
-      nil
+      super || nil
     end
   end
 end
