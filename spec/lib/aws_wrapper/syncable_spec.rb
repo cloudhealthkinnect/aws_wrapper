@@ -7,6 +7,8 @@ RSpec.describe AwsWrapper::Syncable do
   let(:sns_publisher)    { double(:sns_publisher, call: nil) }
 
   before do
+    # Not a stub: a stub would replace Syncable#organisation_id and skip its super lookup.
+    model.extend(Module.new { def organisation_id = 'org-1' })
     model.extend(AwsWrapper::Syncable)
     allow(AwsWrapper::SnsPublisher).to receive(:new).and_return(sns_publisher)
 
@@ -26,14 +28,14 @@ RSpec.describe AwsWrapper::Syncable do
         activerecord_action: 'create',
         model_name:          'Object',
         model_data:          model_attributes,
-        organisation_id:     nil,
+        organisation_id:     'org-1',
         microservices:       microservices
       )
     end
   end
 
   context 'when being included in ActiveRecord' do
-    let(:location) { Location.new(name: 'Brisbane', state: 'QLD') }
+    let(:location) { Location.new(name: 'Brisbane', state: 'QLD', organisation_id: 'org-1') }
 
     before { allow(location).to receive(:microservices).and_return(microservices) }
 
@@ -45,7 +47,7 @@ RSpec.describe AwsWrapper::Syncable do
           activerecord_action: 'create',
           model_name:          Location.name,
           model_data:          location.attributes,
-          organisation_id:     nil,
+          organisation_id:     'org-1',
           microservices:       microservices
         )
       end
@@ -61,7 +63,7 @@ RSpec.describe AwsWrapper::Syncable do
           activerecord_action: 'update',
           model_name:           Location.name,
           model_data:          location.attributes,
-          organisation_id:     nil,
+          organisation_id:     'org-1',
           microservices:       microservices
         )
       end
@@ -77,7 +79,7 @@ RSpec.describe AwsWrapper::Syncable do
           activerecord_action: 'destroy',
           model_name:          Location.name,
           model_data:          location.attributes,
-          organisation_id:     nil,
+          organisation_id:     'org-1',
           microservices:       microservices
         )
       end

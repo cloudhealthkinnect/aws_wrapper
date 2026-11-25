@@ -14,6 +14,7 @@ group :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pg'
   gem 'pry'
+  gem 'rexml'
   gem 'rspec', '~> 3.12'
 end
 
