@@ -53,6 +53,22 @@ RSpec.describe AwsWrapper::Syncable do
       end
     end
 
+    describe 'when the record has no organisation_id' do
+      let(:location) { Location.new(name: 'Brisbane', state: 'QLD') }
+
+      it 'publishes organisation_id as nil' do
+        location.save
+
+        expect(AwsWrapper::SnsPublisher).to have_received(:new).with(
+          activerecord_action: 'create',
+          model_name:          Location.name,
+          model_data:          location.attributes,
+          organisation_id:     nil,
+          microservices:       microservices
+        )
+      end
+    end
+
     describe 'on update' do
       before { location.save }
 
