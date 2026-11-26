@@ -6,6 +6,7 @@ ActiveRecord::Schema.define do
     t.string :state
     t.string :street
     t.string :suburb
+    t.string :organisation_id
 
     t.timestamps
   end

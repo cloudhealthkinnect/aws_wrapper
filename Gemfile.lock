@@ -63,6 +63,7 @@ GEM
       method_source (~> 1.0)
     racc (1.8.1)
     rainbow (3.1.1)
+    rexml (3.4.4)
     rspec (3.13.1)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -102,6 +103,7 @@ DEPENDENCIES
   byebug
   pg
   pry
+  rexml
   rspec (~> 3.12)
   rubocop (~> 0.59.2)
 
