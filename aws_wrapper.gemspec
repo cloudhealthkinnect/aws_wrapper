@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ['Carelever']
   spec.email         = 'dev@carelever.com'
   spec.license       = 'Carelever'
+  spec.required_ruby_version = '>= 3.1'
 
   spec.add_dependency('aws-sdk-sns', '1.21.0')
 end
